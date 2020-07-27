@@ -72,15 +72,10 @@ public class RayTarget : MonoBehaviour
                     {
                         temp[bufferOffset * i + j] = 1.0f;
                         temp[bufferOffset * i + detectionTags.Length + 1] = hitInfo.distance / rayDistance;
-                    }
-                    else
-                    {
-                        temp[bufferOffset * i + j] = 0;
-                        temp[bufferOffset * i + detectionTags.Length + 1] = 1.0f;
+                        temp[bufferOffset * i + detectionTags.Length] = 0;
+                        successRay.Add(hitInfo.point);
                     }
                 }
-                temp[bufferOffset * i + detectionTags.Length] = 0;
-                successRay.Add(hitInfo.point);
             }
             // 레이에 충돌한 대상이 없을 때
             else
@@ -89,7 +84,7 @@ public class RayTarget : MonoBehaviour
                 temp[bufferOffset * i + 1] = 0;
                 temp[bufferOffset * i + detectionTags.Length] = 1.0f;
                 temp[bufferOffset * i + detectionTags.Length + 1] = 1.0f;
-                failedRay.Add(rayEndPoints[i] * rayDistance);
+                failedRay.Add(transform.position + (rayEndPoints[i] * rayDistance));
             }
         }
 
@@ -110,8 +105,8 @@ public class RayTarget : MonoBehaviour
 
         for (int i = 0; i < failedRay.Count; i++)
         {
-            Gizmos.DrawLine(transform.position, transform.position + failedRay[i]);
-            Gizmos.DrawWireSphere(transform.position + failedRay[i], sphereRadius);
+            Gizmos.DrawLine(transform.position, failedRay[i]);
+            Gizmos.DrawWireSphere(failedRay[i], sphereRadius);
         }
     }
 }

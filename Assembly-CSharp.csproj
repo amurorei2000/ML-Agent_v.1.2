@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\Searcher\ObjectManager.cs" />
     <Compile Include="Assets\Scripts\Searcher\PlayerAgent.cs" />
     <Compile Include="Assets\Scripts\Searcher\RayTarget.cs" />
+    <Compile Include="Assets\Scripts\Searcher\Tester.cs" />
     <Compile Include="Assets\Scripts\SelfDriving\DynamicMeshCol.cs" />
     <Compile Include="Assets\Scripts\SelfDriving\PassReward.cs" />
     <Compile Include="Assets\Scripts\SelfDriving\SelfCarAgent.cs" />
